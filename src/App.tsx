@@ -230,7 +230,7 @@ export default function Portfolio() {
           >
             <div className="relative z-10 w-full aspect-square rounded-[3rem] overflow-hidden border-2 border-white/10 group">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
+                src="/profile.png" 
                 alt="Alexis Ahishakiye Portfolio"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
