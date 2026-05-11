@@ -157,63 +157,89 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
-        <div className="relative z-10 max-w-5xl text-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-28 px-6">
+        <div className="relative z-10 max-w-7xl w-full grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+            className="text-left"
           >
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs uppercase tracking-widest font-semibold text-emerald-400">
-              Available for New Opportunities
-            </span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+            >
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <span className="text-xs uppercase tracking-widest font-semibold text-emerald-400">
+                Senior AI Developer & Engineer
+              </span>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.85]"
+            >
+              ALEXIS <br />
+              <span className="bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent italic">
+                AHISHAKIYE.
+              </span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg text-gray-400 max-w-xl mb-12 leading-relaxed"
+            >
+              Architecting the next generation of intelligent digital experiences. 
+              Focused on ML integration, robust backends, and high-performance interfaces.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap gap-6"
+            >
+              <a
+                href="#projects"
+                className="group relative px-8 py-4 rounded-2xl bg-emerald-500 text-black font-bold overflow-hidden transition-all hover:pr-12"
+              >
+                <span className="relative z-10">VIEW MY WORK</span>
+                <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all w-5 h-5" />
+              </a>
+
+              <a
+                href="mailto:alexisahishakiye378@gmail.com"
+                className="px-8 py-4 rounded-2xl glass hover:bg-white/10 transition-all font-bold"
+              >
+                CONTACT ME
+              </a>
+            </motion.div>
           </motion.div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative hidden lg:block"
           >
-            ENGINEERING <br />
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">
-              INTELLIGENT
-            </span> <br />
-            SOLUTIONS.
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
-            Alexis Ahishakiye — AI Developer and Full-Stack Engineer focused on building robust, 
-            data-driven applications that solve complex real-world problems.
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-6"
-          >
-            <a
-              href="#projects"
-              className="group relative px-8 py-4 rounded-2xl bg-emerald-500 text-black font-bold overflow-hidden transition-all hover:pr-12"
-            >
-              <span className="relative z-10">EXPLORE PROJECTS</span>
-              <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all w-5 h-5" />
-            </a>
-
-            <a
-              href="mailto:alexisahishakiye378@gmail.com"
-              className="px-8 py-4 rounded-2xl glass hover:bg-white/10 transition-all font-bold"
-            >
-              GET IN TOUCH
-            </a>
+            <div className="relative z-10 w-full aspect-square rounded-[3rem] overflow-hidden border-2 border-white/10 group">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
+                alt="Alexis Ahishakiye Portfolio"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-12">
+                <span className="text-white font-black text-2xl tracking-tighter uppercase font-mono">Alexis.dev</span>
+              </div>
+            </div>
+            <div className="absolute -inset-4 bg-emerald-500/20 blur-2xl rounded-full -z-10 animate-pulse" />
           </motion.div>
         </div>
       </section>
