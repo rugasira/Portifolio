@@ -152,6 +152,14 @@ const CERTIFICATES: Certificate[] = [
     type: "image",
     icon: <Layout className="w-6 h-6" />,
     description: "Milestone badge for 50 designs, demonstrating creative design and asset creation capabilities."
+  },
+  {
+    title: "Computer Hardware Basics",
+    issuer: "Cisco Networking Academy",
+    path: "/certificates/computer_hardware_basics.pdf",
+    type: "pdf",
+    icon: <Cpu className="w-6 h-6" />,
+    description: "Foundational training in computer hardware components, system assembly, diagnostic troubleshooting, and operating systems."
   }
 ];
 
@@ -174,6 +182,7 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showAllCertificates, setShowAllCertificates] = useState(false);
 
   return (
     <div className="relative min-h-screen selection:bg-emerald-500/30">
@@ -553,38 +562,59 @@ export default function Portfolio() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CERTIFICATES.map((cert) => (
-              <motion.div
-                key={cert.title}
-                whileHover={{ y: -5 }}
-                className="group relative p-8 rounded-[2rem] glass hover:border-emerald-500/50 transition-all flex flex-col justify-between"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10 group-hover:bg-emerald-500/10 transition-colors" />
-                
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                    {cert.icon}
-                  </div>
-                  <span className="text-xs font-bold text-emerald-500/70 tracking-widest uppercase block mb-2">
-                    {cert.issuer}
-                  </span>
-                  <h4 className="text-xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">
-                    {cert.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                    {cert.description}
-                  </p>
-                </div>
-                
-                <button
-                  onClick={() => setSelectedCert(cert)}
-                  className="w-full py-4 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-black font-bold text-xs tracking-widest uppercase transition-all flex items-center justify-center gap-2 border border-white/5 hover:border-transparent cursor-pointer"
-                >
-                  <Eye className="w-4 h-4" /> View Certificate
-                </button>
-              </motion.div>
-            ))}
+            <AnimatePresence mode="popLayout">
+              {(() => {
+                const displayedCertificates = showAllCertificates ? CERTIFICATES : CERTIFICATES.slice(0, 3);
+                return displayedCertificates.map((cert) => (
+                  <motion.div
+                    key={cert.title}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4 }}
+                    whileHover={{ y: -5 }}
+                    className="group relative p-8 rounded-[2rem] glass hover:border-emerald-500/50 transition-all flex flex-col justify-between"
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10 group-hover:bg-emerald-500/10 transition-colors" />
+                    
+                    <div>
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500 group-hover:text-black transition-all">
+                        {cert.icon}
+                      </div>
+                      <span className="text-xs font-bold text-emerald-500/70 tracking-widest uppercase block mb-2">
+                        {cert.issuer}
+                      </span>
+                      <h4 className="text-xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">
+                        {cert.title}
+                      </h4>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                        {cert.description}
+                      </p>
+                    </div>
+                    
+                    <button
+                      onClick={() => setSelectedCert(cert)}
+                      className="w-full py-4 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-black font-bold text-xs tracking-widest uppercase transition-all flex items-center justify-center gap-2 border border-white/5 hover:border-transparent cursor-pointer"
+                    >
+                      <Eye className="w-4 h-4" /> View Certificate
+                    </button>
+                  </motion.div>
+                ));
+              })()}
+            </AnimatePresence>
           </div>
+
+          {CERTIFICATES.length > 3 && (
+            <div className="flex justify-center mt-16">
+              <button
+                onClick={() => setShowAllCertificates(!showAllCertificates)}
+                className="group relative px-8 py-4 rounded-2xl glass hover:bg-emerald-500 hover:text-black font-bold text-xs tracking-widest uppercase transition-all flex items-center gap-2 cursor-pointer border border-white/10 hover:border-transparent"
+              >
+                {showAllCertificates ? "See Less" : "See More..."}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
